@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "dev.virefire.viira"
-version = "1.0.1"
+version = "1.0.0"
 
 repositories {
     mavenCentral()

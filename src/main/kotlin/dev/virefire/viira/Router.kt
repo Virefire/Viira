@@ -55,10 +55,7 @@ open class Router {
         }
     }
 
-    fun use(path: String, vararg middlewares: Middleware, router: Router) {
-        middlewares.forEach {
-            routes.add(ChainElement.GlobalMiddleware(path, it))
-        }
+    fun use(path: String, router: Router) {
         routes.add(ChainElement.SubRouter(path, router))
     }
 
