@@ -1,7 +1,7 @@
 package dev.virefire.viira.types
 
 class Headers : MutableMap<String, String> {
-    val map = HashMap<String, String>()
+    val map = mutableMapOf<String, String>()
 
     override val entries: MutableSet<MutableMap.MutableEntry<String, String>>
         get() = map.entries
