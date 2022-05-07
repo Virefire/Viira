@@ -62,7 +62,7 @@ class AppConfig {
     var hideBranding = false
     var threadPoolSize = 4
     var handlePreflight = true
-    val silentJson = false
+    var silentJson = false
     var routes: (Router.() -> Unit)? = null
     fun routes(routes: Router.() -> Unit) {
         this.routes = routes
