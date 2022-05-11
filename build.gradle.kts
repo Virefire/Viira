@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "dev.virefire.viira"
-version = "1.0.0"
+version = "1.0.1"
 
 repositories {
     mavenCentral()
@@ -17,8 +17,8 @@ repositories {
 }
 
 dependencies {
-    implementation("io.ktor:ktor-server-cio:2.0.0")
-    implementation("dev.virefire.kson:KSON:1.2.0")
+    implementation("io.ktor:ktor-server-cio:2.0.1")
+    implementation("dev.virefire.kson:KSON:1.3.0")
 }
 
 tasks.withType<KotlinCompile> {
