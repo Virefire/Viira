@@ -9,7 +9,7 @@ object Viira {
     val version: String
     init {
         val p = Properties()
-        val stream = Viira::class.java.getResourceAsStream("/version.properties")
+        val stream = Viira::class.java.getResourceAsStream("/dev/virefire/viira/version.properties")
         if (stream != null) {
             p.load(stream)
             version = p.getProperty("version")
