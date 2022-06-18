@@ -17,7 +17,7 @@ repositories {
 }
 
 dependencies {
-    implementation("dev.virefire.viira:Viira:1.0.2")
+    implementation("dev.virefire.viira:Viira:1.0.3")
 }
 ```
 

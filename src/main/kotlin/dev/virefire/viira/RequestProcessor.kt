@@ -49,7 +49,7 @@ suspend fun handle(
     )
     val responseHeaders = Headers()
     if (!config.hideBranding) {
-        responseHeaders["X-Powered-By".lowercase()] = "Ebonited v" + Viira.version
+        responseHeaders["X-Powered-By".lowercase()] = "Viira v" + Viira.version
     }
     val response = Response(responseHeaders) { status, headers, bytes ->
         appRes.status(HttpStatusCode.fromValue(status))
@@ -79,7 +79,7 @@ suspend fun handle(
     }
     try {
         execute(0, listOf(), request, response)
-    } catch (e: Exception) {
+    } catch (e: Throwable) {
         e.printStackTrace()
         if (!response.headersSent) {
             response.status(500)
