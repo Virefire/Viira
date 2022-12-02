@@ -6,10 +6,9 @@ import io.ktor.server.cio.*
 import io.ktor.server.engine.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
-import kotlinx.coroutines.Dispatchers.Default
 import kotlinx.coroutines.withContext
 
-
+@Suppress("ExtractKtorModule")
 class AppServer(ip: String, port: Int, config: AppConfig, handler: suspend (ApplicationRequest, ApplicationResponse) -> Unit) {
     private val engine: CIOApplicationEngine = embeddedServer(CIO, port, ip, configure = {
         this.callGroupSize = config.threadPoolSize
@@ -18,7 +17,7 @@ class AppServer(ip: String, port: Int, config: AppConfig, handler: suspend (Appl
     }) {
         install(createApplicationPlugin(name = "viira") {
             onCall {
-                withContext(Default) {
+                withContext(config.coroutineContext) {
                     handler(it.request, it.response)
                 }
             }

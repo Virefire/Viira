@@ -93,12 +93,13 @@ suspend fun handle(
     }
 }
 
-private fun splitQuery(uri: URI): MutableMap<String, String> {
+fun splitQuery(uri: URI): MutableMap<String, String> {
     val queryPairs = mutableMapOf<String, String>()
     val query = uri.query ?: return queryPairs
     val pairs = query.split("&").toTypedArray()
     for (pair in pairs) {
         val idx = pair.indexOf("=")
+        if (idx == -1) continue
         queryPairs[URLDecoder.decode(pair.substring(0, idx), "UTF-8")] =
             URLDecoder.decode(pair.substring(idx + 1), "UTF-8")
     }

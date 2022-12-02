@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "dev.virefire.viira"
-version = "1.0.3"
+version = "1.1.0"
 
 repositories {
     mavenCentral()
@@ -17,12 +17,17 @@ repositories {
 }
 
 dependencies {
-    implementation("io.ktor:ktor-server-cio:2.0.2")
+    implementation("io.ktor:ktor-server-cio:2.1.3")
     implementation("dev.virefire.kson:KSON:1.3.1")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.9.0")
 }
 
 java {
     toolchain.languageVersion.set(JavaLanguageVersion.of(8))
+}
+
+tasks.test {
+    useJUnitPlatform()
 }
 
 tasks.withType<KotlinCompile> {
@@ -54,13 +59,15 @@ publishing {
         }
     }
     repositories {
-        maven {
-            val properties = Properties()
-            properties.load(rootProject.file("publish.properties").inputStream())
-            url = uri(properties["deployRepoUrl"].toString())
-            credentials {
-                username = properties["deployRepoUsername"].toString()
-                password = properties["deployRepoPassword"].toString()
+        if (rootProject.file("publish.properties").exists()) {
+            maven {
+                val properties = Properties()
+                properties.load(rootProject.file("publish.properties").inputStream())
+                url = uri(properties["deployRepoUrl"].toString())
+                credentials {
+                    username = properties["deployRepoUsername"].toString()
+                    password = properties["deployRepoPassword"].toString()
+                }
             }
         }
     }

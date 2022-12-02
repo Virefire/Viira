@@ -3,6 +3,7 @@ package dev.virefire.viira
 import dev.virefire.viira.server.AppServer
 import io.ktor.server.request.*
 import io.ktor.server.response.*
+import kotlinx.coroutines.Dispatchers.Default
 import java.util.*
 
 object Viira {
@@ -64,6 +65,7 @@ class AppConfig {
     var handlePreflight = true
     var silentJson = false
     var routes: (Router.() -> Unit)? = null
+    var coroutineContext = Default
     fun routes(routes: Router.() -> Unit) {
         this.routes = routes
     }

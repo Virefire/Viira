@@ -17,7 +17,7 @@ repositories {
 }
 
 dependencies {
-    implementation("dev.virefire.viira:Viira:1.0.3")
+    implementation("dev.virefire.viira:Viira:1.1.0")
 }
 ```
 
@@ -65,14 +65,15 @@ fun main() {
 
 List of available configuration options:
 
-| Name              | Description                                                                                                | Default           |
-|-------------------|------------------------------------------------------------------------------------------------------------|-------------------|
-| `trustProxy`      | Whether to trust proxy headers or not                                                                      | `false`           |
-| `proxyHeader`     | Name of the proxy header to use                                                                            | `X-Forwarded-For` |
-| `threadPoolSize`  | Number of threads used to process requests                                                                 | `4`               |
-| `hideBranding`    | Whether to hide Viira branding from headers or not                                                         | `false`           |
-| `handlePreflight` | Whether to automatically handle preflight requests                                                         | `true`            |
-| `silentJson`      | Enables [silent mode in JSON parser](https://github.com/Virefire/KSON/blob/master/README.md#deserializing) | `false`           |
+| Name               | Description                                                                                                | Default                        |
+|--------------------|------------------------------------------------------------------------------------------------------------|--------------------------------|
+| `trustProxy`       | Whether to trust proxy headers or not                                                                      | `false`                        |
+| `proxyHeader`      | Name of the proxy header to use                                                                            | `X-Forwarded-For`              |
+| `threadPoolSize`   | Number of threads used to process requests                                                                 | `4`                            |
+| `hideBranding`     | Whether to hide Viira branding from headers or not                                                         | `false`                        |
+| `handlePreflight`  | Whether to automatically handle preflight requests                                                         | `true`                         |
+| `silentJson`       | Enables [silent mode in JSON parser](https://github.com/Virefire/KSON/blob/master/README.md#deserializing) | `false`                        |
+| `coroutineContext` | Allows to specify custom coroutine context                                                                 | `Default` coroutine dispatcher |
 
 You can also pass `routes` lambda to `application` function to app configuration:
 
